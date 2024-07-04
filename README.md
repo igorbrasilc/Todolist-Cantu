@@ -12,10 +12,6 @@ Este projeto implementa um sistema de tarefas utilizando ASP.NET Core e MongoDB.
 
 Existem métodos DTO para operações de criação (POST) e atualização (PUT) de tarefas no sistema. Essas estruturas foram aplicadas para garantir melhor uso das services por parte dos usuários e ajudar a manter a integridade dos dados.
 
-## Documentação Swagger
-
-O projeto está documentado com Swagger para facilitar o entendimento e teste das APIs. Para acessar a documentação, execute o projeto e navegue para `/swagger/index.html`.
-
 ## Testes
 
 O projeto inclui testes unitários na service TodolistTaskService. Para executar os testes, utilize o comando:
@@ -26,21 +22,27 @@ dotnet test
 
 ## Rodando o Projeto
 
-Para rodar o projeto em um ambiente de desenvolvimento, utilize o comando:
+Para rodar o projeto em um ambiente de desenvolvimento, um Dockerfile e um docker-compose.yml foram criados para permitir uma rápida execução independente do ambiente. Para utilizar, você precisa do docker funcionando na sua máquina.
+
+Para rodar o projeto, utilize o comando abaixo e espere pelo build:
 
 ```bash
-dotnet run
+docker-compose up --build
 ```
 
-A configuração da porta localhost é:
+Assim que finalizar, a aplicação deve estar rodando na endereço abaixo, acesse pelo seu navegador de preferência:
 
 ```bash
-http://localhost:5012
+http://localhost:8080
 ```
+
+## Documentação Swagger
+
+O projeto está documentado com Swagger para facilitar o entendimento e teste das APIs. Para acessar a documentação, execute o projeto e navegue para `http://localhost:8080/swagger`.
 
 ## Banco de Dados MongoDB
 
-O projeto utiliza um banco de dados MongoDB hospedado no MongoDB Atlas. Já existem as configurações de uma conexão temporário em `appsettings.json`, mas é possível configurar manualmente alterando as settings em
+O projeto utiliza um banco de dados MongoDB hospedado no MongoDB Atlas. Já existem as configurações de uma conexão temporária em `appsettings.json` para fins de validação da API, mas é possível configurar manualmente alterando as settings no arquivo:
 
 ```JSON
 "MongoDB": {
